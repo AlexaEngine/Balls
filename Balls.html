@@ -1,0 +1,88 @@
+<div
+  class="playgroundx"
+  style="width: 500px; height: 200px; border: 3px solid black;"
+>
+  <div
+    id="ballx"
+    style="
+      position: absolute;
+      margin: 10px;
+      left: 0px;
+      top: 0px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgb(207, 18, 179);
+    "
+  ></div>
+
+
+  <div id="ball" style="
+    z-index:-5;
+    position:absolute;
+    left:10px;
+    top:10px;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:rgb(82, 57, 211)">
+  </div>
+
+  <div
+    id="ballY"
+    style="
+      position: absolute;
+      margin: 10px;
+      left: 0px;
+      top: 0px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgb(161, 108, 0);
+    "
+  >
+  </div>
+
+  <script>
+    var velocityXY = 10;
+    var velocityYY = 10;
+    var positionXY = 0;
+    var positionYY = 0;
+
+    const ballY = document.getElementById("ballY");
+    function update() {
+      if (positionXY + velocityXY > 450 || positionXY + velocityXY < 0) {
+        velocityXY = -velocityXY;
+      }
+      if (positionYY + velocityYY > 150 || positionYY + velocityYY < 0) {
+        velocityYY = -velocityYY;
+      }
+
+      positionXY += velocityXY;
+      ballY.style.left = `${positionXY}px`;
+      positionYY += velocityYY;
+      ballY.style.top = `${positionYY}px`;
+    }
+
+    setInterval(() => {
+      update();
+    }, 100);
+
+    var velocityX = 10;
+    var positionX = 0;
+    const ballx = document.getElementById("ballx");
+
+    function updateX() {
+      if (positionX + velocityX > 450 || positionX + velocityX < 0) {
+        velocityX = -velocityX;
+      }
+
+      positionX += velocityX;
+      ballx.style.left = `${positionX}px`;
+    }
+
+    setInterval(() => {
+      updateX();
+    }, 100);
+  </script>
+</div>
